@@ -1,37 +1,66 @@
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeaProtocol - Share Your Problems</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+    }
+    h1 {
+        text-align: center;
+    }
+    #commentForm {
+        margin-bottom: 20px;
+    }
+    #commentForm textarea {
+        width: 100%;
+        height: 100px;
+        resize: vertical;
+    }
+    .comment {
+        background-color: #f9f9f9;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Share your problems with TeaProtocol</h1>
+    <form id="commentForm">
+        <textarea id="comment" placeholder="Write your comment here..." required></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="comments">
+        <!-- Comments will be displayed here -->
+    </div>
+</div>
 
-Alternatively, for H1 and H2, an underline-ish style:
+<script>
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var commentText = document.getElementById('comment').value;
+        if (commentText.trim() !== '') {
+            var commentElement = document.createElement('div');
+            commentElement.classList.add('comment');
+            commentElement.textContent = commentText;
+            document.getElementById('comments').appendChild(commentElement);
+            document.getElementById('commentForm').reset();
+        } else {
+            alert('Please enter your comment!');
+        }
+    });
+</script>
 
-Alt-H1
-======
-
-Alt-H2
-------
-Emphasis, aka italics, with *asterisks* or _underscores_.
-
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
-
-Combined emphasis with **asterisks and _underscores_**.
-
-Strikethrough uses two tildes. ~~Scratch this.~~
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
-
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-
-* Unordered list can use asterisks
-- Or minuses
-+ Or pluses
+</body>
+</html>
